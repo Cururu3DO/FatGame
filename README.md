@@ -1,2 +1,2 @@
-# FatGameD.js
+# FatGameD
 A Javascript-based programming language to facilitate game programming.
