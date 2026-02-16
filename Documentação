@@ -1,0 +1,153 @@
+FatGame.js — Documentação V1
+
+Mini Linguagem 2D simples para jogos em JavaScript.
+
+Inicialização
+
+Game.create(config)
+
+Inicia o jogo.
+
+Game.create({
+  width: 800,
+  height: 600,
+  background: "#000"
+})
+
+Loop
+
+Game.update(callback)
+
+Executa lógica a cada frame.
+
+Game.update(() => {
+  // lógica
+})
+
+Game.draw(callback)
+
+Executa renderização a cada frame.
+
+Game.draw(() => {
+  // desenho
+})
+
+bjetos
+
+Game.object(props)
+
+Cria um objeto.
+
+let obj = Game.object({
+  x: 0,
+  y: 0,
+  width: 50,
+  height: 50,
+  color: "red",
+  sprite: "img.png"
+})
+
+Renderização
+
+Game.clear()
+
+Limpa a tela.
+
+Game.clear()
+
+Game.rect(obj)
+
+Desenha retângulo.
+
+Game.rect(obj)
+
+Game.circle(obj)
+
+Desenha círculo.
+
+Game.circle(obj)
+
+Game.sprite(obj)
+
+Desenha imagem do objeto.
+
+Game.sprite(obj)
+
+Colisão
+
+Game.collide(a, b, type)
+
+Verifica colisão entre dois objetos.
+
+Game.collide(a, b)
+
+Tipos:
+
+"stay" (padrão)
+
+"enter"
+
+"exit"
+
+Game.collide(player, enemy, "enter")
+
+Toque / Mouse
+
+Game.touch(type, obj)
+
+Detecta toque ou clique.
+
+Tipos:
+
+"stay"
+
+"start"
+
+"end"
+
+Game.touch("start")
+Game.touch("start", player)
+
+Game.touchPosition()
+
+Retorna posição atual do toque.
+
+let pos = Game.touchPosition()
+
+Teclado
+
+Game.key(tecla, type)
+
+Detecta teclas.
+
+Tipos:
+
+"stay"
+
+"start"
+
+"end"
+
+Game.key("a")
+Game.key(" ", "start")
+
+Exemplo Básico
+
+Game.create({ width: 800, height: 600 })
+
+let player = Game.object({
+  x: 100,
+  y: 100,
+  width: 50,
+  height: 50,
+  color: "blue"
+})
+
+Game.update(() => {
+  if (Game.key("d")) player.x += 2
+})
+
+Game.draw(() => {
+  Game.clear()
+  Game.rect(player)
+})
